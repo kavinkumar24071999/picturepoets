@@ -13,27 +13,65 @@ export type Photo = {
   height: number;
 };
 
-export const hero: Photo = {
-  src: "/photos/pr-gaze.jpg",
-  alt: "A bride in a white saree looks up at the groom under a pavilion.",
-  width: 1567,
-  height: 1800,
-};
-
 export type Story = {
+  slug: string;
   title: string;
+  place: string;
+  when: string;
   line: string;
+  cover: Photo;
   photos: Photo[];
 };
 
+export function storyMeta(story: Story) {
+  return [story.place, story.when].filter(Boolean).join(" · ");
+}
+
+export function getStory(slug: string) {
+  return stories.find((story) => story.slug === slug);
+}
+
 export const stories: Story[] = [
   {
+    slug: "praveen-rivetha",
     title: "Praveen & Rivetha",
-    line: "A veil, a church door, and gold resting in an open hand.",
+    place: "Emmanuel Church",
+    when: "September 2026",
+    line: "The evening before, then the morning at the church.",
+    cover: {
+      src: "/photos/pr-gaze.jpg",
+      alt: "A bride in a white saree looks up at the groom under a pavilion.",
+      width: 1567,
+      height: 1800,
+    },
     photos: [
+      {
+        src: "/photos/pr-jewels.jpg",
+        alt: "Close view of a bride's bangles and necklace as she holds the groom's arm.",
+        width: 1200,
+        height: 1800,
+      },
+      {
+        src: "/photos/pr-rings.jpg",
+        alt: "A couple holds their rings toward the camera.",
+        width: 1200,
+        height: 1800,
+      },
+      {
+        src: "/photos/pr-gaze.jpg",
+        alt: "A bride in a white saree looks up at the groom under a pavilion.",
+        width: 1567,
+        height: 1800,
+      },
       {
         src: "/photos/pr-veil.jpg",
         alt: "A groom lifts a bride's veil as she smiles.",
+        width: 1200,
+        height: 1800,
+      },
+      {
+        src: "/photos/pr-door.jpg",
+        alt: "A couple walks out of a doorway, the bride holding yellow flowers.",
         width: 1200,
         height: 1800,
       },
@@ -44,39 +82,36 @@ export const stories: Story[] = [
         height: 1800,
       },
       {
-        src: "/photos/pr-door.jpg",
-        alt: "A couple walks out of a doorway, the bride holding yellow flowers.",
-        width: 1200,
-        height: 1800,
-      },
-      {
         src: "/photos/pr-gold.jpg",
         alt: "A gold heart pendant rests in an open palm above henna-stained hands.",
         width: 1480,
         height: 1800,
       },
-      {
-        src: "/photos/pr-rings.jpg",
-        alt: "A couple holds their rings toward the camera.",
-        width: 1200,
-        height: 1800,
-      },
-      {
-        src: "/photos/pr-jewels.jpg",
-        alt: "Close view of a bride's bangles and necklace as she holds the groom's arm.",
-        width: 1200,
-        height: 1800,
-      },
     ],
   },
   {
+    slug: "sree-srija",
     title: "Sree & Srija",
+    place: "Temple",
+    when: "September 2026",
     line: "They stood in front of the temple and let the stone stay in the frame.",
+    cover: {
+      src: "/photos/ss-hold.jpg",
+      alt: "A couple in wedding clothes holds each other in front of a temple.",
+      width: 1200,
+      height: 1800,
+    },
     photos: [
       {
         src: "/photos/ss-bride.jpg",
         alt: "A bride in a turquoise saree stands before a carved temple tower.",
         width: 1200,
+        height: 1800,
+      },
+      {
+        src: "/photos/ss-hands.jpg",
+        alt: "Two henna-stained hands clasped, a temple tower soft behind them.",
+        width: 1451,
         height: 1800,
       },
       {
@@ -91,27 +126,24 @@ export const stories: Story[] = [
         width: 1200,
         height: 1800,
       },
-      {
-        src: "/photos/ss-hands.jpg",
-        alt: "Two henna-stained hands clasped, a temple tower soft behind them.",
-        width: 1451,
-        height: 1800,
-      },
     ],
   },
   {
+    slug: "sid-gayu",
     title: "Sid & Gayu",
+    place: "",
+    when: "May 2025",
     line: "Garlands first. Then the laugh that would not sit still.",
+    cover: {
+      src: "/photos/sg-seat.jpg",
+      alt: "A couple seated in jasmine garlands at their wedding.",
+      width: 1800,
+      height: 1200,
+    },
     photos: [
       {
         src: "/photos/sg-seat.jpg",
         alt: "A couple seated in jasmine garlands at their wedding.",
-        width: 1800,
-        height: 1200,
-      },
-      {
-        src: "/photos/sg-play.jpg",
-        alt: "A bride and groom laugh and gesture during a wedding ritual.",
         width: 1800,
         height: 1200,
       },
@@ -121,77 +153,11 @@ export const stories: Story[] = [
         width: 1351,
         height: 1800,
       },
-    ],
-  },
-  {
-    title: "Before the arrival",
-    line: "Color on the skin, and a portrait made while everyone waited.",
-    photos: [
       {
-        src: "/photos/bless-portrait.jpg",
-        alt: "A woman in a purple saree stands with her hands on her hips.",
-        width: 1351,
-        height: 1800,
-      },
-      {
-        src: "/photos/bless-color.jpg",
-        alt: "A woman with turmeric and kumkum on her face rests against the person beside her.",
-        width: 1351,
-        height: 1800,
-      },
-      {
-        src: "/photos/bless-hands.jpg",
-        alt: "Two pairs of hands rest together, stained with turmeric.",
+        src: "/photos/sg-play.jpg",
+        alt: "A bride and groom laugh and gesture during a wedding ritual.",
         width: 1800,
-        height: 1351,
-      },
-    ],
-  },
-  {
-    title: "Kept close",
-    line: "The frames that hold the day when the wide picture is finished.",
-    photos: [
-      {
-        src: "/photos/mehendi.jpg",
-        alt: "A bride surrounded by henna-painted hands raised around her face.",
-        width: 1800,
-        height: 1547,
-      },
-      {
-        src: "/photos/mirror.jpg",
-        alt: "A bride looks at her reflection in a mirror.",
-        width: 1662,
-        height: 1800,
-      },
-      {
-        src: "/photos/jewels.jpg",
-        alt: "A close portrait of a bride's diamond necklace and bangles.",
-        width: 1164,
-        height: 1800,
-      },
-      {
-        src: "/photos/garland.jpg",
-        alt: "A bride rests her head on the groom's shoulder beneath red and yellow garlands.",
-        width: 1415,
-        height: 1800,
-      },
-      {
-        src: "/photos/reception.jpg",
-        alt: "A couple holds hands at a reception, she in a lilac gown and he in a maroon suit.",
-        width: 1486,
-        height: 1800,
-      },
-      {
-        src: "/photos/monogram.jpg",
-        alt: "Two hands meet in front of a gold monogram.",
-        width: 1200,
-        height: 1800,
-      },
-      {
-        src: "/photos/child.jpg",
-        alt: "A small child is held during a wedding, looking toward the camera.",
-        width: 1800,
-        height: 1351,
+        height: 1200,
       },
     ],
   },

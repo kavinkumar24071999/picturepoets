@@ -8,8 +8,8 @@ Built with Next.js so it deploys on Vercel with no extra build settings.
 
 Galleries make people hunt. This template asks them to read.
 
-1. Land on the marigold mark and one wedding photograph.
-2. Scroll the stories: a couple, a line, then their frames.
+1. Land on one full-screen wedding photograph.
+2. Open a couple to read that day in order, with the place and year.
 3. See weddings, engagements, and families.
 4. Read how a day goes: write, wander, keep.
 5. Send a date, or open the note in a mail app.
